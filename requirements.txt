@@ -2,7 +2,6 @@
 # Flask
 # ----------------------
 flask
-flask-wtf
 
 
 # ----------------------
@@ -12,13 +11,7 @@ mock
 
 
 # ----------------------
-# Database
-# ----------------------
-sqlalchemy
-flask-sqlalchemy
-
-
-# ----------------------
 # Production Server
 # ----------------------
 gevent
+gunicorn
