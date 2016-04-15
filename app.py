@@ -6,7 +6,8 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-import os
+import os,requests
+from firebase import firebase
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
