@@ -7,6 +7,7 @@ This file creates your application.
 """
 
 import os,requests
+import pickle
 from firebase import firebase
 from flask import Flask, render_template, request, redirect, url_for
 
@@ -26,7 +27,13 @@ def home():
 
 @app.route('/whoops')
 def whoops():
-    return 'whoops'
+    master=pickle.load(open("mega.pickle","rb"))
+    total=0
+    for wordlen in master:
+        total=total+len(wordlen)
+        print wordlen
+    print total/2544
+    return str(master)
 
 @app.route('/about/')
 def about():
