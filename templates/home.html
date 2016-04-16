@@ -5,5 +5,22 @@
 {% endblock %}
 
 
+
 {% block main %}
+<form method="POST" action="/process">
+Enter your website that needs to be shortened
+</br>
+<input type="text" name="link">
+<input type="submit" value="press me" />
+</br>
+{{result}}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 {% endblock %}
