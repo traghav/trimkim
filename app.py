@@ -31,13 +31,14 @@ def home(url='default'):
         live=firebase2.get('/live', None)
         for item in live:
             current = live[item]['r0']+live[item]['r1']+live[item]['r2']
-            if current==url.lower:
+
+            if current==url.lower():
                 if validURL(live[item]['url'])==True:
-                    return redirect(url)
+                    return redirect(live[item]['url'])
                 else:
-                    url="http://"+url
+                    url="http://"+live[item]['url']
                     return redirect(url)
-        return render_template('404.html'), 404
+        return "not found"
 
 
 
@@ -61,7 +62,7 @@ def surgeon():
     x = firebase2.post('/used', str(rhyme))
     x = firebase2.post('/live',{'url':url,'r0':rhyme[0],'r1':rhyme[1],'r2':rhyme[2]})
     furl=rhyme[0].title()+rhyme[1].title()+rhyme[2].title()
-    flash(Markup('Successfully shortened, please click <a href="http://trim.kim/'+furl+'" > trim.kim/'+furl+  '</a>'))
+    flash(Markup('Successfully shortened, please click <a href="'+furl+'" > trim.kim/'+furl+  '</a>'))
     return redirect('/')
 
 
