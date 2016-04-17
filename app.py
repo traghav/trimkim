@@ -62,7 +62,7 @@ def surgeon():
     x = firebase2.post('/used', str(rhyme))
     x = firebase2.post('/live',{'url':url,'r0':rhyme[0],'r1':rhyme[1],'r2':rhyme[2]})
     furl=rhyme[0].title()+rhyme[1].title()+rhyme[2].title()
-    flash(Markup('Successfully trimmed,  <a href="'+furl+'" > trim.kim/'+furl+  '</a>'))
+    flash(Markup('Successfully trimmed:  <a href="'+furl+'" > trim.kim/'+furl+  '</a>'))
     return redirect('/')
 
 
