@@ -34,10 +34,10 @@ def home(url='default'):
 
             if current==url.lower():
                 if validURL(live[item]['url'])==True:
-                    return redirect(live[item]['url'])
+                    return redirect(live[item]['url']) , 301
                 else:
                     url="http://"+live[item]['url']
-                    return redirect(url)
+                    return redirect(url) , 301
         return render_template('404.html'), 404
 
 
