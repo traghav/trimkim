@@ -6,10 +6,11 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-import os,requests
+import os,requests, urllib
 import pickle
 import random
 from firebase import firebase
+from urlparse import urlparse
 from flask import Flask, render_template, request, flash, redirect, url_for, Markup
 
 app = Flask(__name__)
@@ -33,11 +34,12 @@ def home(url='default'):
             current = live[item]['r0']+live[item]['r1']+live[item]['r2']
 
             if current==url.lower():
-                if validURL(live[item]['url'])==True:
-                    return redirect(live[item]['url']) , 301
-                else:
-                    url="http://"+live[item]['url']
-                    return redirect(url) , 301
+                ourl=live[item]['url']
+                ourl=urllib.unquote(ourl).decode('utf8')
+                print ourl 
+                if not urlparse(ourl).scheme:
+                    ourl = "http://"+ourl
+                return redirect((ourl)), 301
         return render_template('404.html'), 404
 
 
@@ -60,6 +62,7 @@ def surgeon():
     rhyme=giveValid()
     firebase2 = firebase.FirebaseApplication('https://trimkim.firebaseio.com', None)
     x = firebase2.post('/used', str(rhyme))
+    url=urllib.unquote(url.encode("utf8"))
     x = firebase2.post('/live',{'url':url,'r0':rhyme[0],'r1':rhyme[1],'r2':rhyme[2]})
     furl=rhyme[0].title()+rhyme[1].title()+rhyme[2].title()
     flash(Markup('Successfully trimmed:  <a href="'+furl+'" > trim.kim/'+furl+  '</a>'))
