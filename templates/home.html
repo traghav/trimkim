@@ -3,24 +3,107 @@
 
 {% block js %}
 {% endblock %}
+{% block css %}
+<style type="text/css">
 
+  
+  body{
+    padding-top: 40px;
+  }
+  h1, p{
+    text-align:center;
+    font-family: 'Quicksand', sans-serif;	
+  }
+  h1{
+    font-size:70px;
+    margin:0;
+  }
+  p{
+    font-size:24px;
+    margin:15px 0;
+  }
+  
+  .textbox { 
+    border: 1px solid #c4c4c4; 
+    margin-bottom: 05px;
+    max-width: 565px;
+    min-width: 270px;
+    font-size: 18px; 
+    padding: 4px 4px 4px 4px; 
+    border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px; 
+    box-shadow: 0px 0px 8px #d9d9d9;
+    -moz-box-shadow: 0px 0px 8px #d9d9d9; 
+    -webkit-box-shadow: 0px 0px 8px #d9d9d9; 
+} 
+ 
+	.textbox:focus { 
+	    outline: none; 
+	    border: 1px solid #7bc1f7; 
+	    box-shadow: 0px 0px 8px #7bc1f7; 
+	    -moz-box-shadow: 0px 0px 8px #7bc1f7; 
+	    -webkit-box-shadow: 0px 0px 8px #7bc1f7; 
+	} 
+	.input-group{
+		max-width: 440px;
+		
+	}
+
+
+</style>
+{% endblock %}
 
 
 {% block main %}
-<form method="POST" action="/process">
-Enter your website that needs to be shortened
+
+<!-- <form method="POST" action="/process" >
+	<div class="col-lg-6">
+    <div class="input-group" id="sizing-addon1">
+      <input type="text" name="link" class="form-control" placeholder="Paste link here">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="submit">Trim it!</button>
+      </span>
+    </div>
+  </div>
+
+</br> -->
+<!-- <input type="text" name="link" placeholder="Enter link that to shorten" class="textbox">
 </br>
-<input type="text" name="link">
-<input type="submit" value="press me" />
+<input type="submit" value="Trim it!" class="btn btn-lg btn-primary" />
+
 </br>
-{{result}}
-{% with messages = get_flashed_messages() %}
+</br> 
+</form> -->
+
+
+<section id="intro" class="wrapper style1 fullscreen fade-up">
+		<div class="inner">
+		<form method="POST" action="/process" >
+			<h1>trim.kim</h1>
+			<p>A poetic URL shortener</p>
+			<p><input type="text" name="link" class="form-control" placeholder="Paste link here"> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-secondary" type="submit">Trim it!</button> </p>
+			
+			</form>
+			</br>
+			{% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class=flashes>
+    <ul class=flashes align="center">
     {% for message in messages %}
-      {{ message }}
+     <h3> {{ message }}  </h3>
     {% endfor %}
     </ul>
   {% endif %}
 {% endwith %}
 {% endblock %}
+		</div>
+	</section>
+
+
+  
+
+
+
+

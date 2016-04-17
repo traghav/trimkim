@@ -7,12 +7,13 @@
   body{
     padding-top: 40px;
   }
-  h1, p{
+  h1, p, h3{
     text-align:center;
   }
-  h1{
+  h1,h3{
     font-size:64px;
-    margin:75px 0 50px;
+    margin: 0 ;
+    font-family: 'Quicksand', sans-serif;
   }
   p{
     font-size:24px;
@@ -22,7 +23,8 @@
 {% endblock %}
 
 {% block main %}
-<h1>404</h1>
-<p>That page doesn't even exist.</p>
-<p>Why don't you just <a href="{{ url_for('home') }}">go back home</a>?</p>
+<h1>trim.kim</h1> </br><h3>Uh oh! The page you're looking for doesn't exist 😞</h3>
+<p>You probably have the wrong shortened URL. </p>
+<p>Why don't you just <a href="{{ url_for('home') }}">go back and trim something else</a>?</p>
+<p>Thank you for your dropping by. Sorry you couldn't find what you were looking for.</p>
 {% endblock %}
